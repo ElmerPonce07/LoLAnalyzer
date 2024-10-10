@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>Summoner's Oracle</title>
+  </head>
+  <body>
+    <div class="chat-container">
+      <img
+        src="/static/league-of-legends-logo-13AAC5B212-seeklogo.com.png"
+        alt="Logo"
+        class="logo"
+      />
+      <h1>Summoner's Oracle</h1>
+      <div id="chat-box"></div>
+      <input
+        type="text"
+        id="user-input"
+        placeholder="Type your message here..."
+      />
+      <button id="send-button">Send</button>
+    </div>
+
+    <script src="static\script.js"></script>
+  </body>
+</html>
