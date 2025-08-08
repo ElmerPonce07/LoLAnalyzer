@@ -1,6 +1,6 @@
-# LoLAnalyzer
+# Summoner's Oracle - AI League of Legends Coach
 
-A command-line tool to fetch, analyze, and display statistics from League of Legends matches using the Riot Games API.
+An interactive, web-based AI coach for League of Legends, powered by OpenAI's GPT. This application provides a chat interface where players can get personalized advice to improve their gameplay.
 
 ## Table of Contents
 
@@ -8,64 +8,61 @@ A command-line tool to fetch, analyze, and display statistics from League of Leg
 - [Prerequisites](#prerequisites)
 - [Installation & Configuration](#installation--configuration)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
-- **Summoner Lookup**: Fetch basic summoner information (level, icon) by summoner name.
-- **Match History**: Retrieve a list of recent matches for a given player.
-- **Performance Analysis**: Calculate and display key in-game statistics for recent games, such as:
-  - Kills/Deaths/Assists (KDA)
-  - Creep Score (CS) per minute
-  - Vision Score
-  - Win Rate
+- **AI-Powered Coaching**: Leverages `gpt-3.5-turbo` to provide insightful and conversational gameplay advice.
+- **Interactive Persona**: The AI adopts the persona of the "Summoner's Oracle", a character from the League of Legends universe.
+- **Personalized Guidance**: The Oracle will ask for your rank, role, and main champion to tailor its advice to your specific needs.
+- **Web-Based Interface**: A simple and clean chat interface built with Flask.
+- **Conversation History**: The chatbot remembers the context of your conversation for a more natural interaction.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html) (Version 11 or newer recommended)
-- [Apache Maven](https://maven.apache.org/download.cgi)
-- A **Riot Games API Key**. You can get one from the [Riot Developer Portal](https://developer.riotgames.com/).
+- Python 3.x
+- Pip (Python's package installer)
+- An **OpenAI API Key**. You can get one from the OpenAI Platform.
 
 ## Installation & Configuration
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/LoLAnalyzer.git
-    cd LoLAnalyzer
+    git clone https://github.com/your-username/SummonersOracle.git
+    cd SummonersOracle
     ```
 
-2.  **Configure your API Key:**
-    Create a configuration file at `src/main/resources/config.properties` with the following content:
-    ```properties
-    riot.api.key=YOUR_API_KEY_HERE
-    ```
-    Replace `YOUR_API_KEY_HERE` with your actual Riot Games API key.
-    *(Note: The `config.properties` file is included in `.gitignore` to prevent you from accidentally committing your secret key.)*
-
-3.  **Build the project:**
-    Use Maven to compile the source code and package it into an executable JAR.
+2.  **Install dependencies:**
+    It's recommended to create a virtual environment first. Then, install the required Python packages.
     ```bash
-    mvn package
+    pip install Flask openai
     ```
-    The final JAR file (`LoLAnalyzer-1.0-SNAPSHOT.jar`) will be located in the `target/` directory.
+    *(For a more robust setup, you can create a `requirements.txt` file.)*
+
+3.  **Set up your API Key:**
+    You need to provide your OpenAI API key to the application. The most secure way is to use an environment variable.
+
+    **Windows (Command Prompt):**
+    ```cmd
+    set OPENAI_API_KEY="YOUR_API_KEY_HERE"
+    ```
+
+    **macOS/Linux:**
+    ```bash
+    export OPENAI_API_KEY="YOUR_API_KEY_HERE"
+    ```
+    You will also need to modify `app.py` to read this environment variable.
 
 ## Usage
 
-Run the application from the command line, passing the summoner name and region as arguments.
+1.  Run the Flask application:
+    ```bash
+    python app.py
+    ```
+2.  Open your web browser and navigate to:
+    ```
+    http://127.0.0.1:5000
+    ```
+3.  Start chatting with the Summoner's Oracle!
 
-```bash
-java -jar target/LoLAnalyzer-1.0-SNAPSHOT.jar "Your Summoner Name" NA1
-```
-
-Supported regions include: `BR1`, `EUN1`, `EUW1`, `JP1`, `KR`, `LA1`, `LA2`, `NA1`, `OC1`, `TR1`, `RU`.
-
-## Contributing
-
-Contributions are welcome! Please feel free to fork the repository, make changes, and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License - see the `LICENSE.md` file for details.
